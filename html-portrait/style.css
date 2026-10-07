@@ -13,8 +13,18 @@ img {
   /*      border: 3px solid blue; */
 }
 
+.container{
+  margin-top:65px;
+  margin-left: 110px;
+  border: 1px solid red;
+}
+
+#question {
+  
+}
+
 img:hover {
-  height: 400px;
+  height: 145px;
 }
 
 p:hover {
@@ -26,24 +36,4 @@ p:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-#title {
-  position: absolute;
-  left: 25px;
-  top: 20px;
-  margin: 0;
-}
-
-#question {
-  position: absolute;
-  left: 25px;
-  top: 130px;
-  margin: 0;
-}
-
-#click {
-  position: absolute;
-  left: 25px;
-  top: 210px;
 }
