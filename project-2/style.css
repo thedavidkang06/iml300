@@ -1,3 +1,134 @@
-body{
-    
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+#Efficiency {
+  position: absolute;
+
+  left: 365px;
+  top: 546px;
+
+  width: 740px;
+
+  margin: 0;
+  text-align: center;
+
+  font-size: 100px;
+  line-height: 1.4;
+  color: black;
+}
+#us {
+    position: absolute;
+
+  left: 345px;
+  top: 430px;
+
+  width: 750px;
+
+  margin: 0;
+  text-align: center;
+
+  font-size: 120px;
+    font-family:"Reenie Beanie", cursive;
+  line-height: 1.4;
+  color: black;
+}
+
+#play {
+    position: absolute;
+
+  left: 360px;
+  top: 745px;
+
+  width: 750px;
+
+  margin: 0;
+  text-align: center;
+
+  font-size: 60px;
+    font-family:"Reenie Beanie", cursive;
+  line-height: 1.4;
+  color: black;
+}
+
+
+#page {
+  position: relative;
+  width: 1440px;
+  height: 900px;
+
+  background-image: url("assets/lined.jpg");
+  background-size: 1440px 900px;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+.letter {
+  position: absolute;
+}
+
+.letter img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: block;
+}
+
+.letter .second {
+  opacity: 0;
+}
+
+.letter:hover .first {
+  opacity: 0;
+}
+
+.letter:hover .second {
+  opacity: 1;
+}
+
+.w {
+  left: 220px;
+  top: 163px;
+  width: 350px;
+  height: 321px;
+}
+
+.h {
+  left: 450px;
+  top: 285px;
+  width: 190px;
+  height: 253px;
+}
+
+.i {
+  left: 580px;
+  top: 250px;
+  width: 180px;
+  height: 224px;
+}
+
+.m {
+  left: 660px;
+  top: 270px;
+  width: 188px;
+  height: 283px;
+}
+
+.s {
+  left: 790px;
+  top: 230px;
+  width: 231px;
+  height: 278px;
+}
+
+.y {
+  left: 1020px;
+  top: 290px;
+  width: 180px;
+  height: 303px;
 }
