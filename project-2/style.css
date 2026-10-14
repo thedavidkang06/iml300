@@ -20,7 +20,7 @@ body {
   line-height: 1.4;
   color: black;
 }
-#us {
+#vs {
     position: absolute;
 
   left: 345px;
@@ -57,8 +57,8 @@ body {
 
 #page {
   position: relative;
-  width: 1440px;
-  height: 900px;
+  width: 100vh;
+  height: 100vh;
 
   background-image: url("assets/lined.jpg");
   background-size: 1440px 900px;
