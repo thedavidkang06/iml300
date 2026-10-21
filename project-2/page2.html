@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+  <body class="page2">
     <div id="page">
       <!-- Same layout.js, different class: "layout-scatter" spreads
            every image inside it over the whole window. -->
@@ -41,6 +41,15 @@
         <img class="piece" src="assets/letters/y1.png" alt="">
         <img class="piece" src="assets/letters/y2.png" alt="">
       </div>
+      
+ <!-- Sentence 1: hidden until the animation in style.css shows it -->
+      <p id="line1" class="sentence">What do you remember about playtime as a kid?</p>
+
+      <!-- Sentence 2 + the PLAY: picture (the picture is a link to the next page) -->
+      <p id="line2" class="sentence">During recess and breaks, I loved having a designated time to</p>
+      <a id="playlink" href="page3.html">
+        <img src="assets/play.png" alt="PLAY:">
+      </a>
 
       <a class="nav" href="index.html">&larr; back</a>
     </div>
