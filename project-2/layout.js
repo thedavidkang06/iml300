@@ -22,9 +22,21 @@ function setup() {
   for (let area of selectAll(".layout-scatter")) {
     placeScatter(area);
     area.mousePressed(() => placeScatter(area));
+    
+    let clicks = 0; // how many times this page has been shuffled
+ 
+    area.mousePressed(() => {
+      clicks = clicks + 1;
+      placeScatter(area);
+ 
+      // On the 10th click, add the class "done" to the page.
+      // style.css does all the animation from there (no more JS needed).
+      if (clicks == 10) {
+        select("#page").addClass("done");
+      }
+    });
   }
 }
-
 
 // ---------- ROW: a handwritten word ----------
 function placeRow(word) {

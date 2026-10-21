@@ -1,4 +1,4 @@
-let brushSize1 = 2;
+let brushSize1 = 4;
 let topMargin = 80;
 let holeSpacing = 70; // distance between holes. Bigger number = fewer holes
 
@@ -36,7 +36,7 @@ function draw() {}
 
 function mouseDragged() {
   if (mouseY > topMargin) {
-    stroke(mouseX / 3, mouseY / 3, 255 - mouseX / 3);
+    stroke(mouseX / 3, mouseY / 3, windowWidth - mouseX / 3);
     strokeWeight(brushSize1);
     line(pmouseX, pmouseY, mouseX, mouseY);
   }

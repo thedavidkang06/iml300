@@ -255,6 +255,17 @@ body {
   transition: transform 0.3s;
 }
 
+#portal {
+  height: calc(var(--u) * 70);                      
+  rotate: 0deg;
+}
+
+#cones {
+  height: calc(var(--u) * 30);                      
+  rotate: 0deg;
+}
+
+
 .item img {
   height: 100%;
   width: auto;
@@ -282,6 +293,10 @@ body {
 .item.changed .before { opacity: 0; }
 .item.changed .after  { opacity: 1; }
 
+.page3 .nav {
+  color: white;
+  text-shadow: 0 0 10px black;
+}
 
 .nav.next {
   left: auto;                   /* cancel the left position from .nav */
@@ -289,9 +304,15 @@ body {
   color: white;
   text-shadow: 0 0 20px black;  
   
+  
+  
 }
 
 /* page 4: the p5 drawing canvas fills the window */
+.page4 #sentence {
+  z-index: 5;
+}
+
 canvas {
   position: fixed;
   top: 0;
@@ -303,3 +324,40 @@ canvas {
   color: white;
   text-shadow: 0 0 10px black;
 }
+
+.postit {
+  position: absolute;
+  height: calc(var(--u) * 44);   /* size of each note. Change 16 to resize */
+  width: auto;
+  z-index: 5;                    /* above the canvas, same level as the sentence */
+  pointer-events: none;          /* drawing passes through the notes (see below) */
+}
+
+#post1 {
+  left: calc(var(--u) * -16);
+  top: calc(var(--u) * -4);
+}
+
+#post2 {
+  left: calc(var(--u) * 3.5);     /* shifted right so it overlaps the first one a bit */
+  top: calc(var(--u) * -6);
+  rotate: 7deg;
+}
+
+#switch {
+  position: absolute;
+  right: calc(var(--u) * 9);
+  bottom: calc(var(--u) * -1);   /* sits above the "next" link. Change to move it */
+  z-index: 20;                   /* above the canvas so it can be clicked */
+}
+
+#switch img {
+  display: block;
+  height: calc(var(--u) * 12);   /* size of the picture */
+  width: auto;
+}
+
+#switch:hover {
+  transform: rotate(-6deg) scale(1.08);
+}
+  
