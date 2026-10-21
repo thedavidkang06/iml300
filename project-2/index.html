@@ -1,58 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="style.css">
-        
-    </head>
-    <body>
-  <div id="page">
-      
-      <p id="Efficiency">
-    Efficiency.
-  </p>
-      <p id="vs">
-    vs
-  </p>
-      <p id="play">
-    Let's Play!
-  </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Whimsy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="page">
+      <!-- Everything inside #title is centered as one group -->
+      <main id="title">
+        <!-- No left/top values here: layout.js places the letters (class="layout-row") -->
+        <div id="word" class="layout-row" title="Click to shuffle">
+          <div class="letter"><img class="first" src="assets/letters/w1.png" alt="W"><img class="second" src="assets/letters/w2.png" alt=""></div>
+          <div class="letter"><img class="first" src="assets/letters/h1.png" alt="H"><img class="second" src="assets/letters/h2.png" alt=""></div>
+          <div class="letter"><img class="first" src="assets/letters/i1.png" alt="I"><img class="second" src="assets/letters/i2.png" alt=""></div>
+          <div class="letter"><img class="first" src="assets/letters/m1.png" alt="M"><img class="second" src="assets/letters/m2.png" alt=""></div>
+          <div class="letter"><img class="first" src="assets/letters/s1.png" alt="S"><img class="second" src="assets/letters/s2.png" alt=""></div>
+          <div class="letter"><img class="first" src="assets/letters/y1.png" alt="Y"><img class="second" src="assets/letters/y2.png" alt=""></div>
+        </div>
 
+        <p id="vs">vs</p>
+        <p id="Efficiency">Efficiency.</p>
+        <p id="play"><a href="page2.html">Let's Play!</a></p>
+      </main>
+    </div>
 
-  <div class="letter w">
-    <img class="first" src="assets/letters/w1.png">
-    <img class="second" src="assets/letters/w2.png">
-  </div>
-
-  <div class="letter h">
-    <img class="first" src="assets/letters/h1.png">
-    <img class="second" src="assets/letters/h2.png">
-  </div>
-
-  <div class="letter i">
-    <img class="first" src="assets/letters/i1.png">
-    <img class="second" src="assets/letters/i2.png">
-  </div>
-
-  <div class="letter m">
-    <img class="first" src="assets/letters/m1.png">
-    <img class="second" src="assets/letters/m2.png">
-  </div>
-
-  <div class="letter s">
-    <img class="first" src="assets/letters/s1.png">
-    <img class="second" src="assets/letters/s2.png">
-  </div>
-
-  <div class="letter y">
-    <img class="first" src="assets/letters/y1.png">
-    <img class="second" src="assets/letters/y2.png">
-  </div>
-
-</div>
-</body>
+    <!-- p5.js, then our script -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
+    <script src="layout.js"></script>
+  </body>
 </html>
