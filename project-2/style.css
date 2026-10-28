@@ -194,7 +194,7 @@ body {
  
 #playlink img {
   display: block;
-  height: calc(var(--u) * 17);  /* make PLAY: bigger or smaller here */
+  height: calc(var(--u) * 17); 
   width: auto;
 }
  
@@ -401,14 +401,14 @@ canvas {
 
 #switch {
   position: absolute;
-  right: calc(var(--u) * 9);
+  right: calc(var(--u) * 11);
   bottom: calc(var(--u) * -1);   /* sits above the "next" link. Change to move it */
   z-index: 20;                   /* above the canvas so it can be clicked */
 }
 
 #switch img {
   display: block;
-  height: calc(var(--u) * 12);   /* size of the picture */
+  height: calc(var(--u) * 13);   /* size of the picture */
   width: auto;
 }
 
