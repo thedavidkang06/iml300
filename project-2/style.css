@@ -228,15 +228,15 @@ body {
  
 .done #line1 {
   animation: fadeIn 2s 4s forwards,
-             fadeOut 2s 9s forwards;
+             fadeOut 2s 6s forwards;
 }
  
 .done #line2 {
-  animation: fadeIn 2s 12s forwards;
+  animation: fadeIn 2s 8s forwards;
 }
  
 .done #playlink {
-  animation: fadeInClickable 2s 12s forwards;
+  animation: fadeInClickable 2s 8s forwards;
 }
 
 /* ---------------- PAGE 3: SKY ---------------- */
@@ -245,13 +245,12 @@ body {
   background-image: url("assets/sky.png");
 }
 
-/* the sentence: fades in slowly (reuses fadeIn from page 2) */
 #sentence {
   position: absolute;
   left: 0;
   width: 100%;
   top: 50%;
-  translate: 0 -50%;          /* centered vertically */
+  translate: 0 -50%;          
   z-index: 5; 
   margin: 0;
   text-align: center;
@@ -260,8 +259,8 @@ body {
   color: white;
   text-shadow: 0 0 20px black;  
   opacity: 0;
-  pointer-events: none;         /* clicks go through to the items */
-  animation: fadeIn 3s 1s forwards;   /* 3 sec fade, after a 1 sec wait */
+  pointer-events: none;         
+  animation: fadeIn 3s 1s forwards;   
 }
 
 /* each item: two pictures stacked on top of each other */
@@ -320,18 +319,14 @@ body {
   color: white;
   text-shadow: 0 0 20px black;  
   
-  /* page 3: sky with clouds */
 }
-/* each cloud sets its own size and position.
-   left / top = where the CENTER of the picture sits (% of the window)
-   height = how big it is. Bigger number = bigger cloud */
-#cloud1 {                          /* left cloud (dog) */
+#cloud1 {                         
   left: 21%;
   top: 43%;
   height: calc(var(--u) * 33);
 }
 
-#cloud2 {                          /* top cloud (elephant) */
+#cloud2 {                         
   left: 51%;
   top: 10%;
   height: calc(var(--u) * 30);
@@ -345,7 +340,6 @@ body {
   
 
 
-/* page 4: the p5 drawing canvas fills the window */
 .page4 #sentence {
   z-index: 5;
 }
@@ -355,7 +349,7 @@ canvas {
   top: 0;
   left: 0;
   display: block;
-  touch-action: none;   /* so drawing works on touchscreens too */
+  touch-action: none;  
 }
 .page4 .nav {
   color: white;
@@ -399,6 +393,12 @@ canvas {
   rotate: 7deg;
 }
 
+#post6 {
+  right: calc(var(--u) * -15);    
+  top: calc(var(--u) * -7);
+  rotate: 7deg;
+}
+
 #switch {
   position: absolute;
   right: calc(var(--u) * 11);
@@ -418,14 +418,85 @@ canvas {
 
 /* ---------------- PAGE 5: final paragraph ---------------- */
 
-#final {
+#finalbox {
+  position: absolute;
   left: 50%;
   top: 50%;
-  translate: -50% -50%;      /* centers the whole paragraph on the page */
-  width: 70%;                /* how wide the text block is. Smaller = narrower column */
-  white-space: normal;       /* lets the text wrap onto new lines */
-  line-height: 1.5;          /* space between lines */
-  font-size: calc(var(--u) * 3.2);   /* text size. Change 3.2 to resize */
-  animation: fadeIn 4s 1s forwards;  /* 4 sec fade, after a 1 sec wait */
+  translate: -50% -50%;
+  width: 70%;                       
+  display: flex;
+  flex-direction: column;           
+  gap: calc(var(--u) * 3);          
 }
+
+#final1,
+#final2,
+#final3 {
+  position: static;                
+  translate: none;
+  width: auto;
+  white-space: normal;              
+  line-height: 1.5;
+  font-size: calc(var(--u) * 3.2);  
+}
+
+#final1 { animation: fadeIn 4s 1s forwards; }
+#final2 { animation: fadeIn 4s 4s forwards; }
+#final3 { animation: fadeIn 4s 4s forwards; }
+
+@keyframes stickerIn {
+  from { opacity: 0; scale: 0.4; pointer-events: none; }
+  to   { opacity: 1; scale: 1;   pointer-events: auto; }
+}
+
+.sticker-link {
+  position: absolute;
+  translate: -50% -50%;        
+  z-index: 10;
+  opacity: 0;                  
+  pointer-events: none;
+  animation: stickerIn 1s 8s forwards;   
+}
+
+.sticker-link img {
+  display: block;
+  height: calc(var(--u) * 33);           /* size of the stickers. Change 14 to resize */
+  width: auto;
+}
+
+.sticker-link:hover {
+  transform: rotate(-6deg) scale(1.1);   /* wiggles when you point at it */
+}
+
+/* where each sticker sits, how it leans, and when it appears */
+#sticker1 { left: 7%; top: 82%; rotate: -8deg; }
+#sticker2 { left: 80%; top: 18%; rotate: -30deg;  animation-delay: 8.5s; }
+#sticker3 { left: 98%; top: 25%; rotate: -4deg; animation-delay: 9s; }
+#sticker4 { left: 15%; top: 18%; rotate: -25deg; animation-delay: 9s; }
+#sticker5 { left: 94%; top: 80%; rotate: -15deg; animation-delay: 9s; }
   
+
+#lastbox {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 70%;                       
+  display: flex;
+  flex-direction: column;           
+  gap: calc(var(--u) * 3);          
+}
+
+#last1,
+#last2,
+#last3 {
+  position: static;                
+  translate: none;
+  width: auto;
+  white-space: normal;              
+  line-height: 1.5;
+  font-size: calc(var(--u) * 3.2);  
+}
+
+#last1 { animation: fadeIn 4s 1s forwards; }
+#last2 { animation: fadeIn 4s 6s forwards; }

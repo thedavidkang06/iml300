@@ -4,9 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Whimsy — Imagine</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
   <body class="page3">
@@ -30,13 +27,11 @@
       <img class="after"  src="assets/dragon%20draw.png" alt="drawing">
       </div>
 
-      <!-- copy and paste more .item blocks to add more -->
 
       <a class="nav next" href="page4.html">next &rarr;</a>
     </div>
 
     <script>
-      // When an item is clicked, add/remove the class "changed".
       for (let item of document.querySelectorAll(".item")) {
         item.addEventListener("click", () => item.classList.toggle("changed"));
       }

@@ -1,5 +1,5 @@
-let brushSize = 4;
-let speed = 2.5; // how many dots are added in the direction you go
+let brushSize = 6;
+let speed = 4; // how many dots are added in the direction you go
 
 let x, y;                       // current drawing position
 let frame, bottomBar;           // thickness of the red border (set in setup)
