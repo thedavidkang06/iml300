@@ -1,6 +1,9 @@
-/* One unit that scales with the window — whichever of width/height is
-   tighter wins, so the whole title always fits. At 1440x900 1u = 14.4px,
-   which matches the original pixel design. */
+
+@font-face {
+  font-family: "Art";          /* the name you'll use in your CSS. You can pick any name */
+  src: url("assets/bad.otf") format("opentype");
+}
+
 :root {
   --u: min(1vw, 1.6vh);
 }
@@ -42,8 +45,8 @@ body {
 }
 
 #title > #vs {
-  font-family: "Reenie Beanie", cursive;
-  font-size: calc(var(--u) * 8.3);
+  font-family: "ComicDandy", regular;
+  font-size: calc(var(--u) * 4);
   margin-top: calc(var(--u) * -4);  /* tuck up under the letters */
 }
 
@@ -52,7 +55,7 @@ body {
 }
 
 #title > #play {
-  font-family: "Reenie Beanie", cursive;
+  font-family: "ComicDandy", regular;
   font-size: calc(var(--u) * 4.9);
   margin-top: calc(var(--u) * 3);
 }
@@ -114,7 +117,7 @@ body {
   left: calc(var(--u) * 3);
   bottom: calc(var(--u) * 2);
   z-index: 20;
-  font-family: "Reenie Beanie", cursive;
+  font-family: "ComicDandy", regular;
   font-size: calc(var(--u) * 4);
 }
 
@@ -124,7 +127,7 @@ body {
 #scatter {
   position: absolute;
   inset: 0;
-  cursor: pointer;
+  z-index: 1;   
 }
 
 .piece {
@@ -159,7 +162,7 @@ body {
   text-align: center;
   white-space: nowrap;      
   line-height: 1;
-  font-family: "Reenie Beanie", cursive;
+  font-family: "ComicDandy", cursive;
   font-size: calc(var(--u) * 3.2);
   color: black;
   opacity: 0;               
@@ -169,11 +172,24 @@ body {
 #playlink {
   position: absolute;
   left: 50%;
-  top: calc(var(--line-y) +8vh);
-  translate: -50% 0;        /* centered, starting just under sentence 2 */
+  top: calc(var(--line-y) * 6 );
+  translate: -50% 20%;        /* centered, starting just under sentence 2 */
   z-index: 20;
   opacity: 0;               /* invisible, and not clickable, until it appears */
   pointer-events: none;
+}
+
+/* page 2: letters you can pick up */
+.piece {
+  cursor: grab;
+  touch-action: none;       /* lets dragging work on touchscreens */
+  user-select: none;
+  -webkit-user-drag: none;  /* stops the browser from dragging a ghost copy of the image */
+}
+
+.piece.dragging {
+  transition: none;         /* so the letter follows the mouse instantly */
+  cursor: grabbing;
 }
  
 #playlink img {
@@ -201,7 +217,8 @@ body {
   to   { opacity: 1; pointer-events: auto; }
 }
  
-.done .piece {
+.done .piece,
+.done .postit  {
   animation: fadeOut 1s 1s forwards;
 }
  
@@ -222,10 +239,10 @@ body {
   animation: fadeInClickable 2s 12s forwards;
 }
 
-/* ---------------- PAGE 3: GRASS ---------------- */
+/* ---------------- PAGE 3: SKY ---------------- */
 
-#page.grass {
-  background-image: url("assets/grass.jpg");
+#page.sky {
+  background-image: url("assets/sky.png");
 }
 
 /* the sentence: fades in slowly (reuses fadeIn from page 2) */
@@ -235,9 +252,10 @@ body {
   width: 100%;
   top: 50%;
   translate: 0 -50%;          /* centered vertically */
+  z-index: 5; 
   margin: 0;
   text-align: center;
-  font-family: "Reenie Beanie", cursive;
+  font-family: "ComicDandy", cursive;
   font-size: calc(var(--u) * 7);
   color: white;
   text-shadow: 0 0 20px black;  
@@ -254,17 +272,6 @@ body {
   cursor: pointer;
   transition: transform 0.3s;
 }
-
-#portal {
-  height: calc(var(--u) * 70);                      
-  rotate: 0deg;
-}
-
-#cones {
-  height: calc(var(--u) * 30);                      
-  rotate: 0deg;
-}
-
 
 .item img {
   height: 100%;
@@ -289,9 +296,18 @@ body {
   transform: rotate(-8deg) scale(1.1);
 }
 
-/* when JS adds the class "changed": swap the pictures */
-.item.changed .before { opacity: 0; }
 .item.changed .after  { opacity: 1; }
+@keyframes jiggle {
+  0%   { transform: translate(0, 0)       rotate(0deg); }
+  25%  { transform: translate(2px, -2px)  rotate(-0.6deg); }
+  50%  { transform: translate(-2px, 1px)  rotate(0.5deg); }
+  75%  { transform: translate(1px, 2px)   rotate(-0.4deg); }
+  100% { transform: translate(0, 0)       rotate(0deg); }
+}
+
+.item.changed .after {
+  animation: jiggle 0.8s steps(1) infinite;
+}
 
 .page3 .nav {
   color: white;
@@ -304,9 +320,30 @@ body {
   color: white;
   text-shadow: 0 0 20px black;  
   
-  
-  
+  /* page 3: sky with clouds */
 }
+/* each cloud sets its own size and position.
+   left / top = where the CENTER of the picture sits (% of the window)
+   height = how big it is. Bigger number = bigger cloud */
+#cloud1 {                          /* left cloud (dog) */
+  left: 21%;
+  top: 43%;
+  height: calc(var(--u) * 33);
+}
+
+#cloud2 {                          /* top cloud (elephant) */
+  left: 51%;
+  top: 10%;
+  height: calc(var(--u) * 30);
+}
+
+#cloud3 {                          /* small middle cloud */
+  right: -23%;
+  top: 44%;
+  height: calc(var(--u) * 39);
+}
+  
+
 
 /* page 4: the p5 drawing canvas fills the window */
 .page4 #sentence {
@@ -327,7 +364,7 @@ canvas {
 
 .postit {
   position: absolute;
-  height: calc(var(--u) * 44);   /* size of each note. Change 16 to resize */
+  height: calc(var(--u) * 50);   /* size of each note. Change 16 to resize */
   width: auto;
   z-index: 5;                    /* above the canvas, same level as the sentence */
   pointer-events: none;          /* drawing passes through the notes (see below) */
@@ -339,8 +376,26 @@ canvas {
 }
 
 #post2 {
-  left: calc(var(--u) * 3.5);     /* shifted right so it overlaps the first one a bit */
+  left: calc(var(--u) * 3.5);     
   top: calc(var(--u) * -6);
+  rotate: 7deg;
+}
+
+#post3 {
+  left: calc(var(--u) * -11);     
+  top: calc(var(--u) * -7);
+  rotate: 7deg;
+}
+
+#post4 {
+  right: calc(var(--u) * -15);    
+  top: calc(var(--u) * -7);
+  rotate: 7deg;
+}
+
+#post5 {
+  right: calc(var(--u) * -15);    
+  top: calc(var(--u) * -7);
   rotate: 7deg;
 }
 
@@ -359,5 +414,18 @@ canvas {
 
 #switch:hover {
   transform: rotate(-6deg) scale(1.08);
+}
+
+/* ---------------- PAGE 5: final paragraph ---------------- */
+
+#final {
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;      /* centers the whole paragraph on the page */
+  width: 70%;                /* how wide the text block is. Smaller = narrower column */
+  white-space: normal;       /* lets the text wrap onto new lines */
+  line-height: 1.5;          /* space between lines */
+  font-size: calc(var(--u) * 3.2);   /* text size. Change 3.2 to resize */
+  animation: fadeIn 4s 1s forwards;  /* 4 sec fade, after a 1 sec wait */
 }
   

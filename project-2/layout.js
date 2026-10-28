@@ -2,14 +2,8 @@
 //
 // Give a container one of these classes:
 //   class="layout-row"      → the letters inside wobble like a handwritten word
-//   class="layout-scatter"  → the images inside spread over the whole page
-// Click it to shuffle again.
-//
-// p5 helpers used here:
-//   random(a, b)  → any number between a and b
-//   noise(x)      → "smooth random": numbers close together give similar results.
-//                   That's why neighbouring letters lean together, like one hand.
-//   dist(...)     → distance between two points
+//   class="layout-scatter"  → the images inside spread over the page,
+//                             and can be picked up and moved around
 
 function setup() {
   noCanvas(); // we're only moving HTML images, not drawing
@@ -20,23 +14,11 @@ function setup() {
   }
 
   for (let area of selectAll(".layout-scatter")) {
-    placeScatter(area);
-    area.mousePressed(() => placeScatter(area));
-    
-    let clicks = 0; // how many times this page has been shuffled
- 
-    area.mousePressed(() => {
-      clicks = clicks + 1;
-      placeScatter(area);
- 
-      // On the 10th click, add the class "done" to the page.
-      // style.css does all the animation from there (no more JS needed).
-      if (clicks == 10) {
-        select("#page").addClass("done");
-      }
-    });
+    placeScatter(area);    // spread the letters out once, when the page loads
+    makeDraggable(area);   // then let people pick them up and move them
   }
 }
+
 
 // ---------- ROW: a handwritten word ----------
 function placeRow(word) {
@@ -96,3 +78,45 @@ function placeScatter(area) {
     piece.style("z-index", floor(random(10))); // which one sits on top
   }
 }
+
+
+// ---------- DRAG: pick up letters and move them ----------
+function makeDraggable(area) {
+  let topLayer = 10;  // each letter you grab goes on top of the others
+  let drops = 0;      // how many times a letter has been let go
+
+  for (let piece of area.elt.querySelectorAll(".piece")) {
+
+    // mouse button goes down on a letter: pick it up
+    piece.addEventListener("pointerdown", (e) => {
+      piece.setPointerCapture(e.pointerId);  // keep following the mouse
+      piece.classList.add("dragging");
+      topLayer = topLayer + 1;
+      piece.style.zIndex = topLayer;
+    });
+
+    // mouse moves while holding it: put the letter under the mouse
+    piece.addEventListener("pointermove", (e) => {
+      if (!piece.classList.contains("dragging")) return;
+      piece.style.left = (e.clientX / window.innerWidth * 100) + "%";
+      piece.style.top  = (e.clientY / window.innerHeight * 100) + "%";
+    });
+
+    // mouse button comes up: put it down, and count it
+    piece.addEventListener("pointerup", () => {
+      piece.classList.remove("dragging");
+      drops = drops + 1;
+
+      // on the 20th, add "done" to the page. style.css does the fading.
+      if (drops == 20) {
+        select("#page").addClass("done");
+      }
+    });
+
+    // if the browser interrupts the drag, just put the letter down
+    piece.addEventListener("pointercancel", () => {
+      piece.classList.remove("dragging");
+    });
+  }
+}
+
