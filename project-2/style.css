@@ -314,8 +314,8 @@ body {
 }
 
 .nav.next {
-  left: auto;                   /* cancel the left position from .nav */
-  right: calc(var(--u) * 3);    /* stick to the right edge instead */
+  left: auto;                  
+  right: calc(var(--u) * 3);    
   color: white;
   text-shadow: 0 0 20px black;  
   
@@ -332,8 +332,8 @@ body {
   height: calc(var(--u) * 30);
 }
 
-#cloud3 {                          /* small middle cloud */
-  right: -23%;
+#cloud3 {                         
+  right: -22.2%;
   top: 44%;
   height: calc(var(--u) * 39);
 }
@@ -358,10 +358,10 @@ canvas {
 
 .postit {
   position: absolute;
-  height: calc(var(--u) * 50);   /* size of each note. Change 16 to resize */
+  height: calc(var(--u) * 50);   
   width: auto;
-  z-index: 5;                    /* above the canvas, same level as the sentence */
-  pointer-events: none;          /* drawing passes through the notes (see below) */
+  z-index: 5;                    
+  pointer-events: none;         
 }
 
 #post1 {
@@ -402,13 +402,13 @@ canvas {
 #switch {
   position: absolute;
   right: calc(var(--u) * 11);
-  bottom: calc(var(--u) * -1);   /* sits above the "next" link. Change to move it */
-  z-index: 20;                   /* above the canvas so it can be clicked */
+  bottom: calc(var(--u) * -1);  
+  z-index: 20;                 
 }
 
 #switch img {
   display: block;
-  height: calc(var(--u) * 13);   /* size of the picture */
+  height: calc(var(--u) * 13);   
   width: auto;
 }
 
