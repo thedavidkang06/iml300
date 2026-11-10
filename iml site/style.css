@@ -1,0 +1,71 @@
+body { margin: 0; font-family: Arial, sans-serif; background: #222; }
+a { color: inherit; }
+ 
+.stage {
+  position: relative;
+  width: 100vw;
+  aspect-ratio: 1672 / 941;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.home  { background-image: url("assets/blank.jpg"); }
+.about { background-image: url("assets/iml%20about.png"); }
+.projects { background-image: url("assets/projects.png"); }
+ 
+.hotspot { position: absolute; display: block; }
+.hotspot img { width: 100%; height: 100%; object-fit: contain; transition: transform .2s; }
+.hotspot:hover img { transform: scale(1.06) rotate(-1deg); }
+ 
+.dkang  { left: 11.4%;  top: 0%;   width: 48.5%; height: 50%; }
+.face   { left: 30.8%; top: 51.9%; width: 33%; height: 34.5%; }
+.tag    { left: 47.7%; top: 74%;   width: 16%;   height: 18%;   transform: rotate(-22deg); }
+.tiger  { left: -9%;    top: 55.8%; width: 48%; height: 49.5%; }
+.shoes  { left: 61.3%; top: -12%;    width: 51%; height: 50%; }
+ 
+.back {
+  position: fixed; top: 15px; left: 15px; z-index: 10;
+  background: #fff; color: #000; text-decoration: none;
+  padding: 8px 14px; border-radius: 20px; font-weight: bold;
+}
+
+.page {
+  min-height: 100vh;
+  background: url("images/sub-bg.jpg") center / cover fixed;
+  padding: 80px 30px 40px;
+}
+.page h1 { color: #fff; text-align: center; text-shadow: 0 2px 6px #000; }
+ 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.card {
+  background: #fff; padding: 12px; border-radius: 6px;
+  text-decoration: none; color: #000; text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,.4);
+  transition: transform .2s;
+}
+.card:hover { transform: translateY(-4px); }
+.card img, .card iframe {
+  width: 100%; aspect-ratio: 16 / 10; border: 0;
+  object-fit: cover; background: #ccc; display: block;
+}
+.card p { margin: 10px 0 2px; font-weight: bold; }
+ 
+.projects {
+  background-image: url("assets/projects.png");
+  aspect-ratio: 1372 / 780; 
+}
+.note { position: absolute; pointer-events: none; }
+.note img { width: 100%; height: 100%; object-fit: contain; display: block; }
+ 
+.pic1 { left: 7%;   top: 13.8%; width: 47.3%; height: 50.7%; }
+.pic2 { left: 28.2%; top: 19.9%; width: 48.1%; height: 49.1%; }
+.post1   { left: 13.3%; top: 51.4%; width: 40.5%; height: 37.5%; }
+.post2   { left: 38.5%; top: 52.6%; width: 40.2%; height: 38.8%; }
+.bluepost   { left: 43%; top: 9.2%;  width: 29.2%; height: 29.7%; }
+ 
